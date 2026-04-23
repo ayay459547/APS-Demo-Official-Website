@@ -59,8 +59,8 @@
             position: absolute;
             inset: 0;
             background-image: 
-                linear-gradient(rgba(0, 85, 255, 0.05) 1px, transparent 1px),
-                linear-gradient(90deg, rgba(0, 85, 255, 0.05) 1px, transparent 1px);
+                linear-gradient(rgba(0, 85, 255, 0.04) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(0, 85, 255, 0.04) 1px, transparent 1px);
             background-size: 40px 40px;
             background-position: center center;
             z-index: -2;
@@ -98,7 +98,6 @@
             100% { --angle: 360deg; }
         }
 
-        /* Fallback for older browsers */
         @supports not (background: conic-gradient(from var(--angle), red, blue)) {
             .border-beam-card::before {
                 background: linear-gradient(135deg, #0055FF, #00D4FF);
@@ -124,15 +123,6 @@
         .group:hover .tech-bracket::before { top: -4px; left: -4px; }
         .group:hover .tech-bracket::after { bottom: -4px; right: -4px; }
 
-        /* --- High-Key Image Filter --- */
-        .tech-img {
-            filter: contrast(1.1) saturate(1.2);
-            transition: transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
-        }
-        .group:hover .tech-img {
-            transform: scale(1.05);
-        }
-
         /* Custom Scrollbar */
         ::-webkit-scrollbar { width: 6px; }
         ::-webkit-scrollbar-track { background: #F1F5F9; }
@@ -147,6 +137,19 @@
             backdrop-filter: blur(12px);
             -webkit-backdrop-filter: blur(12px);
             border-bottom: 1px solid rgba(0, 85, 255, 0.1);
+        }
+
+        /* Float Animations */
+        .animate-float {
+            animation: float 6s ease-in-out infinite;
+        }
+        .animate-float-delayed {
+            animation: float 6s ease-in-out 3s infinite;
+        }
+        @keyframes float {
+            0% { transform: translateY(0px); }
+            50% { transform: translateY(-10px); }
+            100% { transform: translateY(0px); }
         }
     </style>
 </head>
@@ -165,20 +168,20 @@
             
             <!-- Anchors -->
             <div class="hidden md:flex items-center space-x-10 text-sm font-tech tracking-widest text-slate-500 font-semibold">
-                <a href="#features" class="hover:text-cyber-blue transition-colors">FEATURES</a>
-                <a href="#architecture" class="hover:text-cyber-blue transition-colors">ARCHITECTURE</a>
-                <a href="#performance" class="hover:text-cyber-blue transition-colors">PERFORMANCE</a>
+                <a href="#ai-engine" class="hover:text-cyber-blue transition-colors">AGENT LOOP</a>
+                <a href="#scenarios" class="hover:text-cyber-blue transition-colors">SCENARIOS</a>
+                <a href="#architecture" class="hover:text-cyber-blue transition-colors">CORE</a>
             </div>
             
             <!-- CTA -->
             <a href="https://ayay459547.github.io/APS-Demo/" target="_blank" rel="noopener noreferrer" class="magnetic-btn hidden md:flex items-center justify-center px-6 py-2.5 text-sm font-tech font-bold tracking-widest text-white bg-cyber-blue rounded-sm hover:shadow-cyber-blue transition-all relative overflow-hidden group">
-                <span class="relative z-10">立即體驗</span>
+                <span class="relative z-10">進入指揮中心</span>
                 <div class="absolute inset-0 bg-cyber-dark transform translate-y-full group-hover:translate-y-0 transition-transform duration-300 z-0"></div>
             </a>
         </div>
     </nav>
 
-    <!-- Hero Section (Light & Crisp) -->
+    <!-- Hero Section -->
     <header class="relative min-h-screen flex items-center pt-24 pb-12 overflow-hidden bg-white">
         <!-- Lightweight Grid Background -->
         <div class="cyber-grid-light"></div>
@@ -196,52 +199,86 @@
                         <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-cyber-cyan opacity-75"></span>
                         <span class="relative inline-flex rounded-full h-2 w-2 bg-cyber-blue"></span>
                     </span>
-                    SYSTEM ONLINE // V2.0
+                    NEXT-GEN SCHEDULING
                 </div>
                 
-                <h1 class="text-5xl md:text-6xl lg:text-7xl font-black leading-[1.1] text-cyber-dark tracking-tight" style="font-family: 'Noto Sans TC', sans-serif;">
+                <h1 class="text-5xl md:text-6xl lg:text-7xl font-black leading-[1.1] text-cyber-dark tracking-tight">
                     打破運算極限<br>
                     <span class="text-transparent bg-clip-text bg-gradient-to-r from-cyber-blue to-cyber-cyan font-tech tracking-normal block mt-2 pb-2">
                         SMART SCHEDULING
                     </span>
                 </h1>
                 
-                <p class="text-lg text-slate-600 font-light leading-relaxed max-w-lg">
-                    捨棄厚重的傳統架構，採用最輕量化的高效能演算引擎。實現 <strong class="font-bold text-cyber-blue">智慧排程</strong>、<strong class="font-bold text-cyber-blue">極致效率</strong> 與 <strong class="font-bold text-cyber-blue">精準決策</strong>，讓數據即刻化為您的產能優勢。
+                <p class="text-lg text-slate-600 font-medium leading-relaxed max-w-lg">
+                    捨棄厚重的傳統架構，採用最輕量化的 AI 決策引擎。實現 <strong class="font-black text-cyber-blue">智慧排程</strong>、<strong class="font-black text-cyber-blue">多版本沙盤推演</strong> 與 <strong class="font-black text-cyber-blue">極致 OEE 提升</strong>，讓數據即刻化為您的產能優勢。
                 </p>
 
-                <div class="pt-4 flex flex-col sm:flex-row items-center gap-4">
-                    <a href="https://ayay459547.github.io/APS-Demo/" target="_blank" rel="noopener noreferrer" class="magnetic-btn w-full sm:w-auto px-8 py-4 bg-cyber-blue text-white font-tech font-bold tracking-widest text-sm rounded-sm hover:shadow-cyber-blue transition-all flex items-center justify-center gap-2 group">
-                        INITIALIZE NOW
-                        <iconify-icon icon="mdi:arrow-right" class="group-hover:translate-x-1 transition-transform"></iconify-icon>
+                <div class="flex items-center gap-4 pt-4">
+                    <a href="#ai-engine" class="magnetic-btn px-8 py-4 bg-cyber-dark text-white font-tech font-bold tracking-widest rounded-sm hover:shadow-lg hover:shadow-cyber-dark/20 transition-all">
+                        探索 AI 引擎
                     </a>
-                    <button class="magnetic-btn w-full sm:w-auto px-8 py-4 border-2 border-slate-200 text-cyber-dark font-tech font-bold tracking-widest text-sm rounded-sm hover:border-cyber-blue hover:text-cyber-blue transition-all flex items-center justify-center gap-2">
-                        <iconify-icon icon="mdi:play-circle-outline" class="text-lg"></iconify-icon>
-                        SYSTEM DEMO
-                    </button>
                 </div>
             </div>
 
-            <!-- Right: Clean Tech Visual -->
-            <div class="relative w-full aspect-square md:aspect-[4/3] lg:aspect-square gs-reveal gs-delay">
-                <!-- Tech Decorators -->
-                <div class="absolute top-0 left-0 w-16 h-16 border-t-2 border-l-2 border-cyber-blue/30 z-20"></div>
-                <div class="absolute bottom-0 right-0 w-16 h-16 border-b-2 border-r-2 border-cyber-blue/30 z-20"></div>
+            <!-- Right: High-Tech Abstract UI Mockup -->
+            <div class="relative w-full aspect-square md:aspect-[4/3] lg:aspect-square gs-reveal gs-delay flex items-center justify-center">
+                <!-- Decorative Circles -->
+                <div class="absolute w-[80%] h-[80%] border border-slate-100 rounded-full animate-[spin_40s_linear_infinite]"></div>
+                <div class="absolute w-[60%] h-[60%] border border-dashed border-cyber-blue/20 rounded-full animate-[spin_30s_linear_infinite_reverse]"></div>
                 
-                <div class="absolute inset-4 bg-slate-50 border border-slate-100 rounded-lg overflow-hidden group shadow-2xl shadow-slate-200/50">
-                    <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&q=80&w=1600" 
-                         alt="Data Analytics and Clean Architecture" 
-                         class="w-full h-full object-cover tech-img">
+                <!-- Main Glass Dashboard Element -->
+                <div class="relative z-10 w-[85%] bg-white/80 backdrop-blur-xl border border-white rounded-2xl shadow-[0_20px_40px_-15px_rgba(0,85,255,0.1)] p-6 tech-bracket animate-float">
                     
-                    <!-- Overlay floating UI element -->
-                    <div class="absolute bottom-6 left-6 right-6 bg-white/90 backdrop-blur-md border border-slate-100 p-4 rounded-md shadow-lg transform translate-y-2 opacity-0 group-hover:translate-y-0 group-hover:opacity-100 transition-all duration-300">
-                        <div class="flex justify-between items-center font-tech text-xs font-bold text-slate-400 mb-2">
-                            <span>EFFICIENCY RATE</span>
-                            <span class="text-cyber-blue">99.9%</span>
+                    <!-- Header -->
+                    <div class="flex justify-between items-center border-b border-slate-100 pb-4 mb-4">
+                        <div class="flex items-center gap-2">
+                            <iconify-icon icon="mdi:view-dashboard" class="text-cyber-blue text-xl"></iconify-icon>
+                            <span class="font-tech font-bold text-sm text-cyber-dark tracking-wide">APS_CANVAS</span>
                         </div>
-                        <div class="w-full bg-slate-100 h-1.5 rounded-full overflow-hidden">
-                            <div class="bg-gradient-to-r from-cyber-blue to-cyber-cyan h-full w-[99.9%]"></div>
+                        <div class="flex gap-1.5">
+                            <div class="w-2.5 h-2.5 rounded-full bg-slate-200"></div>
+                            <div class="w-2.5 h-2.5 rounded-full bg-slate-200"></div>
+                            <div class="w-2.5 h-2.5 rounded-full bg-cyber-cyan"></div>
                         </div>
+                    </div>
+
+                    <!-- Gantt Mock Rows -->
+                    <div class="space-y-3">
+                        <!-- Row 1 -->
+                        <div class="flex items-center gap-3">
+                            <div class="w-16 text-[10px] font-black text-slate-400 text-right">CNC-01</div>
+                            <div class="flex-1 h-8 bg-slate-50 rounded-md relative flex items-center px-1 gap-1">
+                                <div class="h-6 w-1/3 bg-cyber-blue/10 border border-cyber-blue/30 rounded flex items-center px-2"><div class="w-full h-1 bg-cyber-blue/40 rounded-full"></div></div>
+                                <div class="h-6 w-1/4 bg-amber-400/10 border border-amber-400/30 rounded flex items-center px-2"><div class="w-full h-1 bg-amber-400/60 rounded-full"></div></div>
+                            </div>
+                        </div>
+                        <!-- Row 2 -->
+                        <div class="flex items-center gap-3">
+                            <div class="w-16 text-[10px] font-black text-slate-400 text-right">LSR-02</div>
+                            <div class="flex-1 h-8 bg-slate-50 rounded-md relative flex items-center px-1 gap-1 pl-12">
+                                <div class="h-6 w-2/5 bg-cyber-blue/10 border border-cyber-blue/30 rounded flex items-center px-2"><div class="w-full h-1 bg-cyber-blue/40 rounded-full"></div></div>
+                            </div>
+                        </div>
+                        <!-- Row 3 -->
+                        <div class="flex items-center gap-3">
+                            <div class="w-16 text-[10px] font-black text-slate-400 text-right">WLD-01</div>
+                            <div class="flex-1 h-8 bg-slate-50 rounded-md relative flex items-center px-1 gap-1 pl-4">
+                                <div class="h-6 w-1/4 bg-emerald-500/10 border border-emerald-500/30 rounded flex items-center px-2"><div class="w-full h-1 bg-emerald-500/40 rounded-full"></div></div>
+                                <div class="h-6 w-1/3 bg-cyber-blue/10 border border-cyber-blue/30 rounded flex items-center px-2"><div class="w-full h-1 bg-cyber-blue/40 rounded-full"></div></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Floating Stats Card -->
+                <div class="absolute -bottom-6 -right-6 z-20 bg-white border border-slate-100 p-5 rounded-xl shadow-xl shadow-slate-200/50 animate-float-delayed w-48">
+                    <div class="flex justify-between items-start mb-2">
+                        <span class="text-xs font-bold text-slate-400 font-tech">OEE INDEX</span>
+                        <iconify-icon icon="mdi:trending-up" class="text-emerald-500"></iconify-icon>
+                    </div>
+                    <div class="text-3xl font-black text-cyber-dark font-tech">92.4<span class="text-lg text-slate-400">%</span></div>
+                    <div class="mt-2 w-full bg-slate-100 h-1.5 rounded-full overflow-hidden">
+                        <div class="bg-gradient-to-r from-emerald-400 to-emerald-500 h-full w-[92.4%]"></div>
                     </div>
                 </div>
             </div>
@@ -256,172 +293,272 @@
             <span>///</span>
             <span class="flex items-center gap-3"><iconify-icon icon="mdi:brain"></iconify-icon> AI ALGORITHM</span>
             <span>///</span>
-            <span class="flex items-center gap-3"><iconify-icon icon="mdi:clock-fast"></iconify-icon> REAL-TIME SYNC</span>
+            <span class="flex items-center gap-3"><iconify-icon icon="mdi:compare"></iconify-icon> WHAT-IF ANALYSIS</span>
             <span>///</span>
-            <span class="flex items-center gap-3"><iconify-icon icon="mdi:shield-check"></iconify-icon> ENTERPRISE GRADE</span>
+            <span class="flex items-center gap-3"><iconify-icon icon="mdi:chart-donut"></iconify-icon> KPI BENCHMARKING</span>
             <span>///</span>
             <span class="flex items-center gap-3"><iconify-icon icon="mdi:lightning-bolt" class="text-cyber-blue"></iconify-icon> HIGH PERFORMANCE</span>
             <span>///</span>
             <span class="flex items-center gap-3"><iconify-icon icon="mdi:brain"></iconify-icon> AI ALGORITHM</span>
             <span>///</span>
-            <span class="flex items-center gap-3"><iconify-icon icon="mdi:clock-fast"></iconify-icon> REAL-TIME SYNC</span>
-        </div>
-    </section>
-    <style>
-        @keyframes slide {
-            0% { transform: translateX(0%); }
-            100% { transform: translateX(-50%); }
-        }
-    </style>
-
-    <!-- Value Propositions (Clean Tech Cards) -->
-    <section id="features" class="py-32 relative bg-white">
-        <div class="max-w-7xl mx-auto px-6">
-            
-            <div class="text-center mb-20 gs-reveal">
-                <div class="inline-block px-3 py-1 bg-cyber-blue/5 border border-cyber-blue/10 text-cyber-blue font-tech text-xs tracking-widest font-bold mb-4 rounded-sm">
-                    CORE CAPABILITIES
-                </div>
-                <h2 class="text-4xl md:text-5xl font-black text-cyber-dark tracking-tight">驅動未來的運算核心</h2>
-            </div>
-
-            <div class="grid lg:grid-cols-3 gap-8">
-                
-                <!-- Card 1 -->
-                <div class="border-beam-card p-[2px] group gs-reveal">
-                    <div class="bg-white h-full rounded-xl p-8 relative overflow-hidden tech-bracket shadow-lg shadow-slate-100/50 flex flex-col">
-                        <div class="w-12 h-12 bg-cyber-blue/10 rounded-lg flex items-center justify-center mb-6">
-                            <iconify-icon icon="mdi:brain" class="text-3xl text-cyber-blue"></iconify-icon>
-                        </div>
-                        <h4 class="text-2xl font-bold text-cyber-dark mb-4">智慧排程</h4>
-                        <p class="text-slate-500 text-sm leading-relaxed mb-6 flex-grow">
-                            捨棄繁雜運算，輕量級核心結合強大啟發式演算法。秒級解析海量訂單與 BOM 表，瞬間產出完美生產藍圖，交期絕對精準。
-                        </p>
-                        <!-- Tech Decorative Line -->
-                        <div class="w-full h-px bg-gradient-to-r from-cyber-blue/50 to-transparent mt-auto relative">
-                            <div class="absolute top-1/2 -translate-y-1/2 left-0 w-2 h-2 bg-cyber-blue rounded-full"></div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Card 2 -->
-                <div class="border-beam-card p-[2px] group gs-reveal gs-delay">
-                    <div class="bg-white h-full rounded-xl p-8 relative overflow-hidden tech-bracket shadow-lg shadow-slate-100/50 flex flex-col">
-                        <div class="w-12 h-12 bg-cyber-cyan/10 rounded-lg flex items-center justify-center mb-6">
-                            <iconify-icon icon="mdi:rocket-launch" class="text-3xl text-cyber-cyan"></iconify-icon>
-                        </div>
-                        <h4 class="text-2xl font-bold text-cyber-dark mb-4">極致效率</h4>
-                        <p class="text-slate-500 text-sm leading-relaxed mb-6 flex-grow">
-                            以極低延遲即時同步機台與物料狀態。系統自動閃避瓶頸工序，實現零時差的換線優化，將工廠產能推向物理極限。
-                        </p>
-                        <div class="w-full h-px bg-gradient-to-r from-cyber-cyan/50 to-transparent mt-auto relative">
-                            <div class="absolute top-1/2 -translate-y-1/2 left-0 w-2 h-2 bg-cyber-cyan rounded-full"></div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Card 3 -->
-                <div class="border-beam-card p-[2px] group gs-reveal gs-delay-2">
-                    <div class="bg-white h-full rounded-xl p-8 relative overflow-hidden tech-bracket shadow-lg shadow-slate-100/50 flex flex-col">
-                        <div class="w-12 h-12 bg-slate-800/10 rounded-lg flex items-center justify-center mb-6">
-                            <iconify-icon icon="mdi:chart-scatter-plot" class="text-3xl text-slate-800"></iconify-icon>
-                        </div>
-                        <h4 class="text-2xl font-bold text-cyber-dark mb-4">精準決策</h4>
-                        <p class="text-slate-500 text-sm leading-relaxed mb-6 flex-grow">
-                            乾淨直覺的戰情看板與多情境模擬 (What-If) 功能。在輕快流暢的介面中，協助管理者於突發狀況下，基於數據秒下決策。
-                        </p>
-                        <div class="w-full h-px bg-gradient-to-r from-slate-800/50 to-transparent mt-auto relative">
-                            <div class="absolute top-1/2 -translate-y-1/2 left-0 w-2 h-2 bg-slate-800 rounded-full"></div>
-                        </div>
-                    </div>
-                </div>
-
-            </div>
+            <span class="flex items-center gap-3"><iconify-icon icon="mdi:compare"></iconify-icon> WHAT-IF ANALYSIS</span>
         </div>
     </section>
 
-    <!-- Architecture Section (Replaces Heavy Image/Video sections for performance) -->
-    <section id="architecture" class="py-24 bg-slate-50 border-y border-slate-200 overflow-hidden relative">
-        <div class="cyber-grid-light opacity-50"></div>
-        <div class="max-w-7xl mx-auto px-6 relative z-10 grid md:grid-cols-2 gap-16 items-center">
+    <!-- Feature 1: AI Agent Loop -->
+    <section id="ai-engine" class="py-32 relative bg-white overflow-hidden">
+        <div class="max-w-7xl mx-auto px-6 grid lg:grid-cols-2 gap-16 items-center">
+            <!-- Left: Text -->
             <div class="gs-reveal">
-                <h2 class="text-3xl md:text-4xl font-black text-cyber-dark mb-6">輕量架構，重裝上陣</h2>
-                <p class="text-slate-600 mb-8 leading-relaxed">
-                    我們重新定義了 APS 的底層架構。擺脫傳統系統的臃腫，採用模組化、雲端原生的輕量級設計。不僅降低了硬體資源的消耗，更帶來了前所未有的反應速度與極致流暢的操作體驗。
+                <div class="inline-flex items-center gap-2 px-3 py-1 bg-blue-50 border border-blue-100 text-cyber-blue font-tech text-xs tracking-widest font-bold mb-6 rounded-sm">
+                    <iconify-icon icon="mdi:brain"></iconify-icon> AGENT LOOP ENGINE
+                </div>
+                <h2 class="text-4xl md:text-5xl font-black text-cyber-dark mb-6 tracking-tight">會思考的排程大腦</h2>
+                <p class="text-lg text-slate-500 mb-8 leading-relaxed font-medium">
+                    不再憑藉直覺。導入具備認知能力的 AI 排程決策助理，透過標準化的四步驟 <strong class="text-cyber-blue">Agent Loop</strong>，自動為您掃描全廠瓶頸、推薦最佳優化權重，並瞬間產生可行方案。
                 </p>
-                <ul class="space-y-4 font-tech text-sm font-bold text-slate-700">
-                    <li class="flex items-center gap-3"><iconify-icon icon="mdi:check-circle" class="text-cyber-blue text-lg"></iconify-icon> MICROSERVICES ARCHITECTURE</li>
-                    <li class="flex items-center gap-3"><iconify-icon icon="mdi:check-circle" class="text-cyber-blue text-lg"></iconify-icon> HIGH-SPEED IN-MEMORY COMPUTING</li>
-                    <li class="flex items-center gap-3"><iconify-icon icon="mdi:check-circle" class="text-cyber-blue text-lg"></iconify-icon> ZERO-LATENCY DATA SYNC</li>
+                <ul class="space-y-5">
+                    <li class="flex items-start gap-4">
+                        <div class="mt-1 w-6 h-6 rounded-full bg-cyber-blue/10 flex items-center justify-center shrink-0">
+                            <div class="w-2 h-2 rounded-full bg-cyber-blue"></div>
+                        </div>
+                        <div>
+                            <h4 class="font-black text-slate-800 text-lg">自動約束診斷</h4>
+                            <p class="text-slate-500 text-sm mt-1">秒級讀取 BOM 與機台限制，提早揪出潛在衝突。</p>
+                        </div>
+                    </li>
+                    <li class="flex items-start gap-4">
+                        <div class="mt-1 w-6 h-6 rounded-full bg-cyber-blue/10 flex items-center justify-center shrink-0">
+                            <div class="w-2 h-2 rounded-full bg-cyber-blue"></div>
+                        </div>
+                        <div>
+                            <h4 class="font-black text-slate-800 text-lg">多目標優化策略</h4>
+                            <p class="text-slate-500 text-sm mt-1">在達交率(OTD)、稼動率(OEE)與換線成本間，找出完美平衡點。</p>
+                        </div>
+                    </li>
                 </ul>
             </div>
             
-            <!-- Abstract Lightweight Visual Representation -->
-            <div class="relative h-64 md:h-full min-h-[300px] gs-reveal gs-delay flex items-center justify-center">
-                <!-- Center Core -->
-                <div class="w-24 h-24 bg-white border-2 border-cyber-blue rounded-full flex items-center justify-center z-10 shadow-[0_0_30px_rgba(0,85,255,0.2)]">
-                    <span class="font-tech font-bold text-cyber-blue">CORE</span>
-                </div>
-                <!-- Orbiting Elements (CSS Animations) -->
-                <div class="absolute w-[280px] h-[280px] border border-slate-200 rounded-full animate-[spin_15s_linear_infinite]">
-                    <div class="absolute top-0 left-1/2 -translate-x-1/2 -translate-y-1/2 w-6 h-6 bg-cyber-cyan rounded-full"></div>
-                </div>
-                <div class="absolute w-[400px] h-[400px] border border-dashed border-slate-200 rounded-full animate-[spin_25s_linear_infinite_reverse]">
-                    <div class="absolute bottom-0 left-1/2 -translate-x-1/2 translate-y-1/2 w-4 h-4 bg-cyber-dark rounded-sm"></div>
+            <!-- Right: Mock UI for Agent Loop -->
+            <div class="gs-reveal gs-delay relative">
+                <div class="absolute -inset-4 bg-gradient-to-tr from-slate-100 to-white rounded-2xl transform -rotate-3 z-0 border border-slate-100 shadow-xl"></div>
+                
+                <div class="border-beam-card p-[1px] relative z-10">
+                    <div class="bg-white rounded-[15px] p-6 shadow-sm flex flex-col gap-6">
+                        <!-- Header -->
+                        <div class="flex items-center justify-between border-b border-slate-100 pb-4">
+                            <div class="flex items-center gap-2 text-cyber-blue font-bold">
+                                <iconify-icon icon="mdi:robot-outline" class="text-xl"></iconify-icon>
+                                <span>AI 排程決策助理</span>
+                            </div>
+                            <span class="flex items-center gap-1.5 text-xs text-slate-400 font-tech font-bold">
+                                <span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span> SYSTEM READY
+                            </span>
+                        </div>
+
+                        <!-- Chat Area -->
+                        <div class="flex flex-col gap-4 text-sm bg-slate-50/50 p-4 rounded-xl border border-slate-100">
+                            <div class="text-center text-[10px] text-slate-400 font-bold font-tech mb-2">APS ENGINE CONNECTED • 2026/04/21</div>
+                            
+                            <!-- Log -->
+                            <div class="flex gap-3">
+                                <iconify-icon icon="mdi:sparkles" class="text-cyber-cyan mt-1"></iconify-icon>
+                                <div class="bg-white border border-slate-200 px-4 py-2.5 rounded-2xl rounded-tl-sm shadow-sm text-slate-600">
+                                    正在解析 500 筆工單與產能限制...
+                                </div>
+                            </div>
+                            
+                            <!-- Prompt -->
+                            <div class="flex flex-col gap-3 mt-2">
+                                <div class="flex gap-3 font-bold text-slate-800">
+                                    <iconify-icon icon="mdi:robot-outline" class="text-cyber-blue text-lg mt-0.5"></iconify-icon>
+                                    偵測到瓶頸站「五軸 CNC」產能吃緊。請問是否允許進行跨廠區調度？
+                                </div>
+                                <div class="pl-8 flex flex-col gap-2">
+                                    <div class="flex items-center justify-between px-4 py-3 bg-white border border-cyber-blue/30 rounded-xl cursor-pointer hover:shadow-md transition-shadow">
+                                        <div class="flex items-center gap-3">
+                                            <div class="bg-cyber-blue/10 text-cyber-blue p-1.5 rounded-lg"><iconify-icon icon="mdi:play"></iconify-icon></div>
+                                            <span class="font-bold text-slate-700 text-xs">允許跨廠區調度 (推薦)</span>
+                                        </div>
+                                        <iconify-icon icon="mdi:chevron-right" class="text-slate-300"></iconify-icon>
+                                    </div>
+                                    <div class="flex items-center justify-between px-4 py-3 bg-white border border-slate-200 rounded-xl opacity-60">
+                                        <div class="flex items-center gap-3">
+                                            <div class="bg-slate-100 text-slate-500 p-1.5 rounded-lg"><iconify-icon icon="mdi:alert-outline"></iconify-icon></div>
+                                            <span class="font-bold text-slate-600 text-xs">嚴格限制於原廠區</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
+        </div>
+    </section>
+
+    <!-- Feature 2: Historical Benchmarking -->
+    <section id="scenarios" class="py-32 relative bg-slate-50 overflow-hidden border-y border-slate-200">
+        <div class="max-w-7xl mx-auto px-6 grid lg:grid-cols-2 gap-16 items-center">
+            
+            <!-- Left: Mock UI for History Benchmarking -->
+            <div class="gs-reveal order-2 lg:order-1">
+                <div class="bg-white rounded-2xl shadow-xl shadow-slate-200/50 p-6 border border-slate-100 flex flex-col gap-4 relative">
+                    <!-- Decorator -->
+                    <div class="absolute top-0 right-8 w-16 h-1 bg-cyber-blue rounded-b-md"></div>
+
+                    <div class="flex justify-between items-end border-b border-slate-100 pb-4">
+                        <div>
+                            <h3 class="font-black text-slate-800 text-lg flex items-center gap-2">
+                                <iconify-icon icon="mdi:history" class="text-cyber-blue"></iconify-icon> 歷史快照庫
+                            </h3>
+                            <p class="text-[10px] text-slate-400 font-bold mt-1 tracking-wider uppercase">Scenario Library</p>
+                        </div>
+                        <div class="text-[10px] font-bold text-slate-400 bg-slate-100 px-2 py-1 rounded">容量 4/6</div>
+                    </div>
+
+                    <!-- Cards -->
+                    <div class="space-y-3">
+                        <!-- Active Card -->
+                        <div class="border-2 border-cyber-blue bg-white rounded-xl p-4 flex flex-col relative overflow-hidden shadow-md shadow-cyber-blue/10">
+                            <div class="absolute left-0 top-0 bottom-0 w-1 bg-cyber-blue"></div>
+                            <div class="flex justify-between items-start mb-2">
+                                <div class="flex items-center gap-2">
+                                    <div class="w-4 h-4 rounded bg-cyber-blue text-white flex items-center justify-center text-[10px]"><iconify-icon icon="mdi:check"></iconify-icon></div>
+                                    <span class="text-[10px] font-black text-emerald-600 bg-emerald-50 px-2 py-0.5 rounded">現行排程</span>
+                                </div>
+                                <span class="text-[10px] font-bold text-slate-400 font-tech">2026-04-21 08:00</span>
+                            </div>
+                            <h4 class="font-black text-cyber-blue text-sm mb-3">現行正式排程</h4>
+                            <div class="flex gap-2">
+                                <span class="text-[9px] font-bold bg-slate-100 text-slate-600 px-2 py-1 rounded">EDD</span>
+                                <span class="text-[9px] font-bold bg-slate-100 text-slate-600 px-2 py-1 rounded">ITEM</span>
+                            </div>
+                        </div>
+
+                        <!-- Card 2 -->
+                        <div class="border-2 border-transparent bg-slate-50 hover:border-slate-200 transition-colors rounded-xl p-4 flex flex-col">
+                            <div class="flex justify-between items-start mb-2">
+                                <div class="w-4 h-4 rounded border border-slate-300 bg-white"></div>
+                                <span class="text-[10px] font-bold text-slate-400 font-tech">2026-03-28 09:15</span>
+                            </div>
+                            <h4 class="font-black text-slate-700 text-sm mb-3">三月底成本優化排產</h4>
+                            <div class="flex gap-2">
+                                <span class="text-[9px] font-bold bg-white border border-slate-200 text-slate-500 px-2 py-1 rounded">OEE</span>
+                                <span class="text-[9px] font-bold bg-white border border-slate-200 text-slate-500 px-2 py-1 rounded">FAMILY</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Compare Button -->
+                    <button class="w-full mt-2 py-3 bg-cyber-dark text-white font-bold text-sm rounded-lg hover:bg-slate-800 transition-colors flex items-center justify-center gap-2">
+                        <iconify-icon icon="mdi:medal-outline"></iconify-icon> 執行綜合排行榜比對
+                    </button>
+                </div>
+            </div>
+
+            <!-- Right: Text -->
+            <div class="gs-reveal gs-delay order-1 lg:order-2">
+                <div class="inline-flex items-center gap-2 px-3 py-1 bg-cyber-cyan/10 border border-cyber-cyan/20 text-cyan-700 font-tech text-xs tracking-widest font-bold mb-6 rounded-sm">
+                    <iconify-icon icon="mdi:compare"></iconify-icon> WHAT-IF ANALYSIS
+                </div>
+                <h2 class="text-4xl md:text-5xl font-black text-cyber-dark mb-6 tracking-tight">沙盤推演，預知未來</h2>
+                <p class="text-lg text-slate-500 mb-8 leading-relaxed font-medium">
+                    過去的決策，未來的基石。強大的歷史快照庫讓您隨時存檔當前排程。勾選不同時期的策略版本，AI 即刻為您生成 <strong class="text-cyber-blue">多維度對比雷達圖</strong> 與 <strong class="text-cyber-blue">優劣勢洞察報告</strong>。
+                </p>
+                <div class="grid grid-cols-2 gap-6 mt-8">
+                    <div class="border-l-2 border-cyber-blue pl-4">
+                        <div class="text-3xl font-black text-cyber-dark font-tech mb-1">Top 3</div>
+                        <div class="text-xs font-bold text-slate-500">AI 智能評估排名榜單</div>
+                    </div>
+                    <div class="border-l-2 border-cyber-cyan pl-4">
+                        <div class="text-3xl font-black text-cyber-dark font-tech mb-1">100<span class="text-lg text-slate-400">%</span></div>
+                        <div class="text-xs font-bold text-slate-500">數據透明對比無死角</div>
+                    </div>
+                </div>
+            </div>
+            
+        </div>
+    </section>
+
+    <!-- Architecture Section (Lightweight CSS core) -->
+    <section id="architecture" class="py-24 bg-white overflow-hidden relative">
+        <div class="cyber-grid-light opacity-50"></div>
+        <div class="max-w-7xl mx-auto px-6 relative z-10 flex flex-col items-center text-center">
+            
+            <div class="gs-reveal mb-16">
+                <h2 class="text-3xl md:text-4xl font-black text-cyber-dark mb-4">極致效能，無感運行</h2>
+                <p class="text-slate-500 max-w-2xl mx-auto">
+                    所有繁重的基因演算法與堆疊渲染，皆在前端與雲端微服務中無縫交織。您的瀏覽器，就是地表最強的排程工作站。
+                </p>
+            </div>
+            
+            <!-- Abstract Lightweight Visual Representation -->
+            <div class="relative w-64 h-64 gs-reveal gs-delay flex items-center justify-center">
+                <!-- Center Core -->
+                <div class="w-20 h-20 bg-white border-2 border-cyber-blue rounded-full flex items-center justify-center z-10 shadow-[0_0_40px_rgba(0,85,255,0.3)] relative">
+                    <div class="absolute inset-2 border border-cyber-cyan rounded-full animate-ping opacity-30"></div>
+                    <iconify-icon icon="mdi:cpu-64-bit" class="text-3xl text-cyber-blue"></iconify-icon>
+                </div>
+                <!-- Orbiting Elements (CSS Animations) -->
+                <div class="absolute w-[200px] h-[200px] border border-slate-200 rounded-full animate-[spin_10s_linear_infinite]">
+                    <div class="absolute top-0 left-1/2 -translate-x-1/2 -translate-y-1/2 w-4 h-4 bg-cyber-cyan rounded-full shadow-[0_0_10px_#00D4FF]"></div>
+                </div>
+                <div class="absolute w-[300px] h-[300px] border border-dashed border-slate-200 rounded-full animate-[spin_20s_linear_infinite_reverse]">
+                    <div class="absolute bottom-0 left-1/2 -translate-x-1/2 translate-y-1/2 w-3 h-3 bg-cyber-blue rounded-sm shadow-[0_0_10px_#0055FF]"></div>
+                </div>
+            </div>
+
         </div>
     </section>
 
     <!-- Final CTA Section -->
-    <section class="py-32 relative bg-white overflow-hidden text-center">
+    <section class="py-32 relative bg-slate-50 overflow-hidden text-center border-t border-slate-200">
         <!-- Minimal Grid Lines -->
-        <div class="absolute top-0 left-1/2 -translate-x-1/2 w-px h-24 bg-gradient-to-b from-transparent to-cyber-blue"></div>
-        <div class="absolute bottom-0 left-1/2 -translate-x-1/2 w-px h-24 bg-gradient-to-t from-transparent to-cyber-blue"></div>
+        <div class="absolute top-0 left-1/2 -translate-x-1/2 w-px h-24 bg-gradient-to-b from-cyber-blue/50 to-transparent"></div>
 
         <div class="max-w-3xl mx-auto px-6 relative z-10 flex flex-col items-center gs-reveal">
+            <div class="w-16 h-16 bg-white border border-slate-200 rounded-2xl flex items-center justify-center mb-6 shadow-sm transform rotate-45">
+                <iconify-icon icon="mdi:power-standby" class="text-3xl text-cyber-blue transform -rotate-45"></iconify-icon>
+            </div>
             
-            <iconify-icon icon="mdi:hexagon-slice-6" class="text-6xl text-cyber-blue mb-6"></iconify-icon>
-            
-            <h2 class="text-4xl md:text-6xl font-black text-cyber-dark mb-6 tracking-tight">啟動輕量極速新紀元</h2>
-            <p class="text-lg text-slate-500 mb-12 max-w-2xl font-light">
-                擺脫效能瓶頸，讓最純粹的演算法為您的產能加速。立即導入輕量化 APS 系統，體驗毫秒級的排程震撼。
+            <h2 class="text-4xl md:text-5xl font-black text-cyber-dark mb-6 tracking-tight">掌控產線的未來</h2>
+            <p class="text-lg text-slate-500 mb-10 max-w-2xl font-light">
+                體驗新一代的 Web 原生 APS 架構。零負擔導入，秒級運算，讓資料驅動您的每一站決策。
             </p>
             
-            <a href="https://ayay459547.github.io/APS-Demo/" target="_blank" rel="noopener noreferrer" class="magnetic-btn px-12 py-5 bg-cyber-blue text-white font-tech font-bold text-lg tracking-widest rounded-sm hover:shadow-cyber-blue transition-all flex items-center justify-center gap-3 group relative overflow-hidden">
+            <a href="https://ayay459547.github.io/APS-Demo/" target="_blank" rel="noopener noreferrer" class="magnetic-btn px-10 py-4 bg-cyber-blue text-white font-tech font-bold text-sm tracking-widest rounded-md hover:shadow-cyber-blue transition-all flex items-center justify-center gap-3 group relative overflow-hidden">
                 <span class="relative z-10 flex items-center gap-2">
-                    立即體驗系統 <iconify-icon icon="mdi:arrow-right-thick" class="group-hover:translate-x-1 transition-transform"></iconify-icon>
+                    ENTER SYSTEM DEMO <iconify-icon icon="mdi:arrow-right" class="group-hover:translate-x-1 transition-transform text-lg"></iconify-icon>
                 </span>
                 <div class="absolute inset-0 bg-cyber-dark transform translate-y-full group-hover:translate-y-0 transition-transform duration-300 z-0"></div>
             </a>
-            <p class="mt-6 text-xs text-slate-400 font-tech tracking-widest font-bold">14-DAY FULL ACCESS • NO CREDIT CARD REQUIRED</p>
         </div>
     </section>
 
     <!-- Footer -->
-    <footer class="border-t border-slate-200 bg-slate-50 py-12">
+    <footer class="border-t border-slate-200 bg-white py-12">
         <div class="max-w-7xl mx-auto px-6 grid md:grid-cols-2 gap-8 items-center">
             <div>
-                <a href="#" class="text-2xl font-tech font-bold text-cyber-dark flex items-center gap-2 mb-2">
+                <a href="#" class="text-xl font-tech font-bold text-cyber-dark flex items-center gap-2 mb-2 opacity-80 hover:opacity-100 transition-opacity">
                     <iconify-icon icon="mdi:hexagon-multiple" class="text-cyber-blue"></iconify-icon>
                     <span>APS<span class="text-cyber-blue">_</span>CORE</span>
                 </a>
-                <p class="text-slate-500 text-sm font-light">High-performance lightweight scheduling engine.</p>
+                <p class="text-slate-400 text-xs font-medium">Next-Generation Intelligent Scheduling Engine.</p>
             </div>
             <div class="flex gap-6 md:justify-end text-xl">
-                <a href="#" class="text-slate-400 hover:text-cyber-blue transition-colors"><iconify-icon icon="mdi:github"></iconify-icon></a>
-                <a href="#" class="text-slate-400 hover:text-cyber-blue transition-colors"><iconify-icon icon="mdi:linkedin"></iconify-icon></a>
-                <a href="#" class="text-slate-400 hover:text-cyber-blue transition-colors"><iconify-icon icon="mdi:twitter"></iconify-icon></a>
+                <a href="https://github.com/ayay459547" target="_blank" rel="noopener noreferrer" class="text-slate-300 hover:text-cyber-blue transition-colors"><iconify-icon icon="mdi:github"></iconify-icon></a>
+                <a href="https://www.linkedin.com/in/chen-chan-hsieh-7a6221392/" target="_blank" rel="noopener noreferrer" class="text-slate-300 hover:text-cyber-blue transition-colors"><iconify-icon icon="mdi:linkedin"></iconify-icon></a>
             </div>
         </div>
-        <div class="max-w-7xl mx-auto px-6 mt-8 pt-8 border-t border-slate-200 text-center text-slate-400 text-xs font-tech tracking-widest font-bold">
-            &copy; <script>document.write(new Date().getFullYear())</script> APS CORE SYSTEM. ALL RIGHTS RESERVED.
+        <div class="max-w-7xl mx-auto px-6 mt-8 pt-8 border-t border-slate-100 text-center text-slate-300 text-[10px] font-tech tracking-[0.2em] font-bold">
+            &copy; <script>document.write(new Date().getFullYear())</script> APS CORE SYSTEM. ENGINEERED FOR EFFICIENCY.
         </div>
     </footer>
 
     <!-- Scripts Implementation (Performance Optimized) -->
     <script>
-        // --- 1. GSAP Scroll Reveal Animations (Optimized for performance) ---
+        // --- 1. GSAP Scroll Reveal Animations ---
         function initGSAP() {
             gsap.registerPlugin(ScrollTrigger);
 
@@ -434,7 +571,6 @@
                 if(hasDelay1) delayVal = 0.2;
                 if(hasDelay2) delayVal = 0.4;
 
-                // Using purely transform and opacity for max performance
                 gsap.fromTo(el, 
                     { y: 30, opacity: 0 },
                     {
@@ -445,7 +581,7 @@
                         ease: "power2.out",
                         scrollTrigger: {
                             trigger: el,
-                            start: "top 85%", // Trigger when top of element is 85% down viewport
+                            start: "top 85%",
                             toggleActions: "play none none none"
                         }
                     }
@@ -466,7 +602,6 @@
                     const centerX = rect.width / 2;
                     const centerY = rect.height / 2;
                     
-                    // Reduced movement range for subtle/performance focus
                     const deltaX = ((x - centerX) / centerX) * 5; 
                     const deltaY = ((y - centerY) / centerY) * 5;
 
@@ -500,7 +635,7 @@
                     navbar.classList.replace('py-2', 'py-4');
                     navbar.classList.remove('shadow-sm');
                 }
-            }, { passive: true }); // passive true for better scroll performance
+            }, { passive: true });
         }
 
         // Initialize all scripts after DOM load
