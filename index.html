@@ -151,13 +151,22 @@
             50% { transform: translateY(-10px); }
             100% { transform: translateY(0px); }
         }
+
+        /* --- Infinite Marquee Scroll Animation --- */
+        @keyframes scroll {
+            0% { transform: translateX(0); }
+            100% { transform: translateX(-100%); }
+        }
+        .animate-scroll {
+            animation: scroll 30s linear infinite;
+        }
     </style>
 </head>
 <body class="antialiased selection:bg-cyber-blue selection:text-white">
 
     <!-- Navigation -->
     <nav class="fixed w-full z-50 glass-light transition-all duration-300 py-4" id="navbar">
-        <div class="max-w-7xl mx-auto px-6 flex justify-between items-center">
+        <div class="max-w-7xl mx-auto px-6 flex flex-wrap justify-between items-center">
             <!-- Brand -->
             <a href="#" class="text-2xl font-tech font-bold text-cyber-dark flex items-center gap-2 group">
                 <div class="w-8 h-8 bg-cyber-blue text-white flex items-center justify-center rounded-sm transform group-hover:rotate-90 transition-transform duration-300">
@@ -166,18 +175,42 @@
                 <span>APS<span class="text-cyber-blue">_</span>CORE</span>
             </a>
             
-            <!-- Anchors -->
-            <div class="hidden md:flex items-center space-x-10 text-sm font-tech tracking-widest text-slate-500 font-semibold">
+            <!-- Mobile Menu Toggle Button -->
+            <button id="mobile-menu-btn" class="lg:hidden text-cyber-dark text-3xl focus:outline-none hover:text-cyber-blue transition-colors flex items-center">
+                <iconify-icon icon="mdi:menu"></iconify-icon>
+            </button>
+            
+            <!-- Desktop Anchors -->
+            <div class="hidden lg:flex items-center space-x-10 text-sm font-tech tracking-widest text-slate-500 font-semibold">
                 <a href="#ai-engine" class="hover:text-cyber-blue transition-colors">AGENT LOOP</a>
                 <a href="#scenarios" class="hover:text-cyber-blue transition-colors">SCENARIOS</a>
                 <a href="#architecture" class="hover:text-cyber-blue transition-colors">CORE</a>
             </div>
             
-            <!-- CTA -->
-            <a href="https://ayay459547.github.io/APS-Demo/" target="_blank" rel="noopener noreferrer" class="magnetic-btn hidden md:flex items-center justify-center px-6 py-2.5 text-sm font-tech font-bold tracking-widest text-white bg-cyber-blue rounded-sm hover:shadow-cyber-blue transition-all relative overflow-hidden group">
-                <span class="relative z-10">進入指揮中心</span>
-                <div class="absolute inset-0 bg-cyber-dark transform translate-y-full group-hover:translate-y-0 transition-transform duration-300 z-0"></div>
-            </a>
+            <!-- Desktop CTAs -->
+            <div class="hidden lg:flex items-center gap-4">
+                <a href="https://ayay459547.github.io/APS-Demo-APP/" target="_blank" rel="noopener noreferrer" class="magnetic-btn hidden lg:flex items-center justify-center px-4 py-2.5 text-sm font-tech font-bold tracking-widest text-cyber-blue border border-cyber-blue/30 rounded-sm hover:bg-cyber-blue hover:text-white hover:border-cyber-blue transition-all relative overflow-hidden group">
+                    <span class="relative z-10 flex items-center gap-1.5"><iconify-icon icon="mdi:cellphone" class="text-lg"></iconify-icon> 行動協同終端</span>
+                </a>
+                <a href="https://ayay459547.github.io/APS-Demo/" target="_blank" rel="noopener noreferrer" class="magnetic-btn hidden lg:flex items-center justify-center px-6 py-2.5 text-sm font-tech font-bold tracking-widest text-white bg-cyber-blue rounded-sm hover:shadow-cyber-blue transition-all relative overflow-hidden group">
+                    <span class="relative z-10 flex items-center gap-1.5"><iconify-icon icon="mdi:monitor-dashboard" class="text-lg"></iconify-icon> 進入全域指揮中心</span>
+                    <div class="absolute inset-0 bg-cyber-dark transform translate-y-full group-hover:translate-y-0 transition-transform duration-300 z-0"></div>
+                </a>
+            </div>
+
+            <!-- Mobile Menu Panel -->
+            <div id="mobile-menu-panel" class="hidden w-full flex-col gap-4 pt-6 pb-2 lg:hidden basis-full">
+                <a href="#ai-engine" class="mobile-link text-sm font-tech font-bold text-slate-600 hover:text-cyber-blue">AGENT LOOP</a>
+                <a href="#scenarios" class="mobile-link text-sm font-tech font-bold text-slate-600 hover:text-cyber-blue">SCENARIOS</a>
+                <a href="#architecture" class="mobile-link text-sm font-tech font-bold text-slate-600 hover:text-cyber-blue">CORE</a>
+                <div class="w-full h-px bg-slate-100 my-2"></div>
+                <a href="https://ayay459547.github.io/APS-Demo-APP/" target="_blank" rel="noopener noreferrer" class="flex items-center gap-2 text-sm font-tech font-bold text-cyber-blue">
+                    <iconify-icon icon="mdi:cellphone" class="text-lg"></iconify-icon> 行動協同終端 (Mobile Edge)
+                </a>
+                <a href="https://ayay459547.github.io/APS-Demo/" target="_blank" rel="noopener noreferrer" class="flex items-center gap-2 text-sm font-tech font-bold text-cyber-blue">
+                    <iconify-icon icon="mdi:monitor-dashboard" class="text-lg"></iconify-icon> 全域指揮中心 (Global Command)
+                </a>
+            </div>
         </div>
     </nav>
 
@@ -199,23 +232,28 @@
                         <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-cyber-cyan opacity-75"></span>
                         <span class="relative inline-flex rounded-full h-2 w-2 bg-cyber-blue"></span>
                     </span>
-                    NEXT-GEN SCHEDULING
+                    ENTERPRISE READY
                 </div>
                 
-                <h1 class="text-5xl md:text-6xl lg:text-7xl font-black leading-[1.1] text-cyber-dark tracking-tight">
-                    打破運算極限<br>
+                <h1 class="text-4xl sm:text-5xl lg:text-7xl font-black leading-[1.1] text-cyber-dark tracking-tight">
+                    驅動高效智造的<br>決策核心<br>
                     <span class="text-transparent bg-clip-text bg-gradient-to-r from-cyber-blue to-cyber-cyan font-tech tracking-normal block mt-2 pb-2">
                         SMART SCHEDULING
                     </span>
                 </h1>
                 
                 <p class="text-lg text-slate-600 font-medium leading-relaxed max-w-lg">
-                    捨棄厚重的傳統架構，採用最輕量化的 AI 決策引擎。實現 <strong class="font-black text-cyber-blue">智慧排程</strong>、<strong class="font-black text-cyber-blue">多版本沙盤推演</strong> 與 <strong class="font-black text-cyber-blue">極致 OEE 提升</strong>，讓數據即刻化為您的產能優勢。
+                    基於雲端原生架構與先進 AI 演算法，提供即時、精準的產能規劃。透過 <strong class="font-black text-cyber-blue">全域指揮中心</strong> 進行全局排程與策略模擬，結合 <strong class="font-black text-cyber-blue">行動協同終端</strong> 賦能敏捷調度與異常回報，實現無縫銜接的智造生態系。
                 </p>
 
-                <div class="flex items-center gap-4 pt-4">
-                    <a href="#ai-engine" class="magnetic-btn px-8 py-4 bg-cyber-dark text-white font-tech font-bold tracking-widest rounded-sm hover:shadow-lg hover:shadow-cyber-dark/20 transition-all">
-                        探索 AI 引擎
+                <div class="flex flex-col sm:flex-row flex-wrap items-stretch sm:items-center gap-4 pt-4">
+                    <a href="https://ayay459547.github.io/APS-Demo/" target="_blank" rel="noopener noreferrer" class="magnetic-btn px-6 py-3 bg-cyber-dark text-white font-tech font-bold tracking-widest rounded-sm hover:shadow-lg hover:shadow-cyber-dark/20 transition-all flex flex-col items-center justify-center text-center">
+                        <span class="flex items-center gap-2 text-[15px]">全域指揮中心 <iconify-icon icon="mdi:monitor-dashboard"></iconify-icon></span>
+                        <span class="text-[10px] text-slate-400 font-normal mt-0.5 tracking-wider">戰略預演 ‧ 全域排程</span>
+                    </a>
+                    <a href="https://ayay459547.github.io/APS-Demo-APP/" target="_blank" rel="noopener noreferrer" class="magnetic-btn px-6 py-3 bg-white text-cyber-blue border border-cyber-blue/50 font-tech font-bold tracking-widest rounded-sm hover:bg-cyber-blue/5 hover:border-cyber-blue transition-all flex flex-col items-center justify-center text-center">
+                        <span class="flex items-center gap-2 text-[15px]">行動協同終端 <iconify-icon icon="mdi:cellphone"></iconify-icon></span>
+                        <span class="text-[10px] text-cyber-blue/70 font-normal mt-0.5 tracking-wider">現場協同 ‧ 敏捷響應</span>
                     </a>
                 </div>
             </div>
@@ -286,22 +324,29 @@
         </div>
     </header>
 
-    <!-- Tech Marquee Banner (Minimalist) -->
-    <section class="py-4 border-y border-slate-100 bg-slate-50 overflow-hidden flex whitespace-nowrap">
-        <div class="flex animate-[slide_20s_linear_infinite] items-center gap-16 font-tech text-sm text-slate-400 font-bold tracking-[0.2em]">
-            <span class="flex items-center gap-3"><iconify-icon icon="mdi:lightning-bolt" class="text-cyber-blue"></iconify-icon> HIGH PERFORMANCE</span>
-            <span>///</span>
-            <span class="flex items-center gap-3"><iconify-icon icon="mdi:brain"></iconify-icon> AI ALGORITHM</span>
-            <span>///</span>
-            <span class="flex items-center gap-3"><iconify-icon icon="mdi:compare"></iconify-icon> WHAT-IF ANALYSIS</span>
-            <span>///</span>
-            <span class="flex items-center gap-3"><iconify-icon icon="mdi:chart-donut"></iconify-icon> KPI BENCHMARKING</span>
-            <span>///</span>
-            <span class="flex items-center gap-3"><iconify-icon icon="mdi:lightning-bolt" class="text-cyber-blue"></iconify-icon> HIGH PERFORMANCE</span>
-            <span>///</span>
-            <span class="flex items-center gap-3"><iconify-icon icon="mdi:brain"></iconify-icon> AI ALGORITHM</span>
-            <span>///</span>
-            <span class="flex items-center gap-3"><iconify-icon icon="mdi:compare"></iconify-icon> WHAT-IF ANALYSIS</span>
+    <!-- Tech Marquee Banner (Perfect Seamless Loop) -->
+    <section class="py-4 border-y border-slate-100 bg-slate-50 overflow-hidden flex flex-nowrap">
+        <!-- First Set -->
+        <div class="animate-scroll flex items-center gap-16 shrink-0 px-8">
+            <span class="flex items-center gap-3"><iconify-icon icon="mdi:lightning-bolt" class="text-cyber-blue"></iconify-icon> AGILE SCHEDULING</span>
+            <span class="text-slate-300">///</span>
+            <span class="flex items-center gap-3"><iconify-icon icon="mdi:brain"></iconify-icon> AI HEURISTICS</span>
+            <span class="text-slate-300">///</span>
+            <span class="flex items-center gap-3"><iconify-icon icon="mdi:compare"></iconify-icon> WHAT-IF SIMULATION</span>
+            <span class="text-slate-300">///</span>
+            <span class="flex items-center gap-3"><iconify-icon icon="mdi:chart-donut"></iconify-icon> OEE OPTIMIZATION</span>
+            <span class="text-slate-300">///</span>
+        </div>
+        <!-- Second Set (Duplicate for smooth infinite scroll) -->
+        <div class="animate-scroll flex items-center gap-16 shrink-0 px-8">
+            <span class="flex items-center gap-3"><iconify-icon icon="mdi:lightning-bolt" class="text-cyber-blue"></iconify-icon> AGILE SCHEDULING</span>
+            <span class="text-slate-300">///</span>
+            <span class="flex items-center gap-3"><iconify-icon icon="mdi:brain"></iconify-icon> AI HEURISTICS</span>
+            <span class="text-slate-300">///</span>
+            <span class="flex items-center gap-3"><iconify-icon icon="mdi:compare"></iconify-icon> WHAT-IF SIMULATION</span>
+            <span class="text-slate-300">///</span>
+            <span class="flex items-center gap-3"><iconify-icon icon="mdi:chart-donut"></iconify-icon> OEE OPTIMIZATION</span>
+            <span class="text-slate-300">///</span>
         </div>
     </section>
 
@@ -313,9 +358,9 @@
                 <div class="inline-flex items-center gap-2 px-3 py-1 bg-blue-50 border border-blue-100 text-cyber-blue font-tech text-xs tracking-widest font-bold mb-6 rounded-sm">
                     <iconify-icon icon="mdi:brain"></iconify-icon> AGENT LOOP ENGINE
                 </div>
-                <h2 class="text-4xl md:text-5xl font-black text-cyber-dark mb-6 tracking-tight">會思考的排程大腦</h2>
+                <h2 class="text-4xl md:text-5xl font-black text-cyber-dark mb-6 tracking-tight">AI 驅動的動態排程引擎</h2>
                 <p class="text-lg text-slate-500 mb-8 leading-relaxed font-medium">
-                    不再憑藉直覺。導入具備認知能力的 AI 排程決策助理，透過標準化的四步驟 <strong class="text-cyber-blue">Agent Loop</strong>，自動為您掃描全廠瓶頸、推薦最佳優化權重，並瞬間產生可行方案。
+                    告別經驗法則與繁瑣的人工試算。導入具備最佳化演算法的 AI 排程助理，透過標準化的決策迴圈 (Agent Loop)，即時偵測產線瓶頸、動態推薦最佳權重配置，並於毫秒間生成具備高執行力的排產方案。
                 </p>
                 <ul class="space-y-5">
                     <li class="flex items-start gap-4">
@@ -323,8 +368,8 @@
                             <div class="w-2 h-2 rounded-full bg-cyber-blue"></div>
                         </div>
                         <div>
-                            <h4 class="font-black text-slate-800 text-lg">自動約束診斷</h4>
-                            <p class="text-slate-500 text-sm mt-1">秒級讀取 BOM 與機台限制，提早揪出潛在衝突。</p>
+                            <h4 class="font-black text-slate-800 text-lg">多維度限制條件解析</h4>
+                            <p class="text-slate-500 text-sm mt-1">精準對接 ERP/MES，全面解析 BOM、途程 (Routing) 與設備能力，自動防堵排產衝突。</p>
                         </div>
                     </li>
                     <li class="flex items-start gap-4">
@@ -332,8 +377,8 @@
                             <div class="w-2 h-2 rounded-full bg-cyber-blue"></div>
                         </div>
                         <div>
-                            <h4 class="font-black text-slate-800 text-lg">多目標優化策略</h4>
-                            <p class="text-slate-500 text-sm mt-1">在達交率(OTD)、稼動率(OEE)與換線成本間，找出完美平衡點。</p>
+                            <h4 class="font-black text-slate-800 text-lg">多目標最佳化策略</h4>
+                            <p class="text-slate-500 text-sm mt-1">在訂單達交率 (OTD)、設備稼動率 (OEE) 與換線成本之間，動態演算出最佳的生產平衡點。</p>
                         </div>
                     </li>
                 </ul>
@@ -462,18 +507,18 @@
                 <div class="inline-flex items-center gap-2 px-3 py-1 bg-cyber-cyan/10 border border-cyber-cyan/20 text-cyan-700 font-tech text-xs tracking-widest font-bold mb-6 rounded-sm">
                     <iconify-icon icon="mdi:compare"></iconify-icon> WHAT-IF ANALYSIS
                 </div>
-                <h2 class="text-4xl md:text-5xl font-black text-cyber-dark mb-6 tracking-tight">沙盤推演，預知未來</h2>
+                <h2 class="text-4xl md:text-5xl font-black text-cyber-dark mb-6 tracking-tight">多版本情境模擬與分析</h2>
                 <p class="text-lg text-slate-500 mb-8 leading-relaxed font-medium">
-                    過去的決策，未來的基石。強大的歷史快照庫讓您隨時存檔當前排程。勾選不同時期的策略版本，AI 即刻為您生成 <strong class="text-cyber-blue">多維度對比雷達圖</strong> 與 <strong class="text-cyber-blue">優劣勢洞察報告</strong>。
+                    降低決策風險的關鍵。系統支援無限版本的排程快照 (Snapshot) 與 What-If 假設性情境模擬。透過並排對比不同策略版本的 KPI 影響，協助生管與管理層進行基於數據的決策 (Data-Driven Decision Making)。
                 </p>
                 <div class="grid grid-cols-2 gap-6 mt-8">
                     <div class="border-l-2 border-cyber-blue pl-4">
-                        <div class="text-3xl font-black text-cyber-dark font-tech mb-1">Top 3</div>
-                        <div class="text-xs font-bold text-slate-500">AI 智能評估排名榜單</div>
+                        <div class="text-xs font-bold text-slate-500 mb-1">多指標綜合評估</div>
+                        <div class="text-lg font-black text-cyber-dark font-sans leading-tight">AI 智慧推薦<br>最佳決策</div>
                     </div>
                     <div class="border-l-2 border-cyber-cyan pl-4">
-                        <div class="text-3xl font-black text-cyber-dark font-tech mb-1">100<span class="text-lg text-slate-400">%</span></div>
-                        <div class="text-xs font-bold text-slate-500">數據透明對比無死角</div>
+                        <div class="text-xs font-bold text-slate-500 mb-1">全域數據洞察</div>
+                        <div class="text-lg font-black text-cyber-dark font-sans leading-tight">生產指標<br>透明化比對</div>
                     </div>
                 </div>
             </div>
@@ -487,9 +532,9 @@
         <div class="max-w-7xl mx-auto px-6 relative z-10 flex flex-col items-center text-center">
             
             <div class="gs-reveal mb-16">
-                <h2 class="text-3xl md:text-4xl font-black text-cyber-dark mb-4">極致效能，無感運行</h2>
-                <p class="text-slate-500 max-w-2xl mx-auto">
-                    所有繁重的基因演算法與堆疊渲染，皆在前端與雲端微服務中無縫交織。您的瀏覽器，就是地表最強的排程工作站。
+                <h2 class="text-3xl md:text-4xl font-black text-cyber-dark mb-4">雲端原生架構，極致運算效能</h2>
+                <p class="text-slate-500 max-w-2xl mx-auto font-medium">
+                    採用微服務架構與 WebAssembly 邊緣運算技術，將複雜的基因演算法與龐大的數據渲染無縫卸載。無需安裝厚重軟體，您的瀏覽器即是具備極致效能的排程工作站。
                 </p>
             </div>
             
@@ -522,17 +567,27 @@
                 <iconify-icon icon="mdi:power-standby" class="text-3xl text-cyber-blue transform -rotate-45"></iconify-icon>
             </div>
             
-            <h2 class="text-4xl md:text-5xl font-black text-cyber-dark mb-6 tracking-tight">掌控產線的未來</h2>
+            <h2 class="text-4xl md:text-5xl font-black text-cyber-dark mb-6 tracking-tight">無縫銜接的智造生態系</h2>
             <p class="text-lg text-slate-500 mb-10 max-w-2xl font-light">
-                體驗新一代的 Web 原生 APS 架構。零負擔導入，秒級運算，讓資料驅動您的每一站決策。
+                由 <strong>全域指揮中心</strong> 主導高算力排程與全局決策，搭配 <strong>行動協同終端</strong> 確保現場精準執行與即時回報。雙軌並行，讓生產數據流動零時差。
             </p>
             
-            <a href="https://ayay459547.github.io/APS-Demo/" target="_blank" rel="noopener noreferrer" class="magnetic-btn px-10 py-4 bg-cyber-blue text-white font-tech font-bold text-sm tracking-widest rounded-md hover:shadow-cyber-blue transition-all flex items-center justify-center gap-3 group relative overflow-hidden">
-                <span class="relative z-10 flex items-center gap-2">
-                    ENTER SYSTEM DEMO <iconify-icon icon="mdi:arrow-right" class="group-hover:translate-x-1 transition-transform text-lg"></iconify-icon>
-                </span>
-                <div class="absolute inset-0 bg-cyber-dark transform translate-y-full group-hover:translate-y-0 transition-transform duration-300 z-0"></div>
-            </a>
+            <div class="flex flex-col sm:flex-row flex-wrap items-stretch sm:items-center gap-4 justify-center w-full max-w-2xl">
+                <a href="https://ayay459547.github.io/APS-Demo/" target="_blank" rel="noopener noreferrer" class="magnetic-btn px-8 py-4 bg-cyber-blue text-white font-tech font-bold tracking-widest rounded-md hover:shadow-cyber-blue transition-all flex flex-col items-center justify-center text-center group relative overflow-hidden">
+                    <span class="relative z-10 flex items-center gap-2 text-[15px]">
+                        全域指揮中心 <iconify-icon icon="mdi:monitor-dashboard" class="text-lg group-hover:scale-110 transition-transform"></iconify-icon>
+                    </span>
+                    <span class="relative z-10 text-[10px] text-white/80 font-normal mt-0.5 tracking-wider">戰略預演 ‧ 全域排程</span>
+                    <div class="absolute inset-0 bg-cyber-dark transform translate-y-full group-hover:translate-y-0 transition-transform duration-300 z-0"></div>
+                </a>
+                
+                <a href="https://ayay459547.github.io/APS-Demo-APP/" target="_blank" rel="noopener noreferrer" class="magnetic-btn px-8 py-4 bg-white border border-cyber-blue text-cyber-blue font-tech font-bold tracking-widest rounded-md hover:bg-slate-50 transition-all flex flex-col items-center justify-center text-center group relative overflow-hidden">
+                    <span class="relative z-10 flex items-center gap-2 text-[15px]">
+                        行動協同終端 <iconify-icon icon="mdi:cellphone" class="text-lg group-hover:scale-110 transition-transform"></iconify-icon>
+                    </span>
+                    <span class="relative z-10 text-[10px] text-cyber-blue/70 font-normal mt-0.5 tracking-wider">現場協同 ‧ 敏捷響應</span>
+                </a>
+            </div>
         </div>
     </section>
 
@@ -638,11 +693,40 @@
             }, { passive: true });
         }
 
+        // --- 4. Mobile Menu Toggle ---
+        function initMobileMenu() {
+            const btn = document.getElementById('mobile-menu-btn');
+            const panel = document.getElementById('mobile-menu-panel');
+            if (!btn || !panel) return;
+            
+            const icon = btn.querySelector('iconify-icon');
+            const links = panel.querySelectorAll('.mobile-link');
+
+            btn.addEventListener('click', () => {
+                panel.classList.toggle('hidden');
+                panel.classList.toggle('flex');
+                if (panel.classList.contains('flex')) {
+                    icon.setAttribute('icon', 'mdi:close');
+                } else {
+                    icon.setAttribute('icon', 'mdi:menu');
+                }
+            });
+
+            links.forEach(link => {
+                link.addEventListener('click', () => {
+                    panel.classList.add('hidden');
+                    panel.classList.remove('flex');
+                    icon.setAttribute('icon', 'mdi:menu');
+                });
+            });
+        }
+
         // Initialize all scripts after DOM load
         window.addEventListener('DOMContentLoaded', () => {
             initGSAP();
             initMagneticButtons();
             initNavbar();
+            initMobileMenu();
         });
     </script>
 </body>
